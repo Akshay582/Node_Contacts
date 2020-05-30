@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title %>
+        </title>
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <h1 id="page-heading">Rendered from EJS view!</h1>
+        <div id="contacts-list-container">
+            <ul>
+                <% for (let i of contact_list){%>
+                    <li class="contacts">
+                        <div class="details">
+                            <p><%= i.name %></p>
+                            <p><%= i.phone %></p>
+                        </div>
+                        <div class="delete-button">
+                            <a href="/delete-contact/?id=<%=i._id %>">
+                                <button>Delete</button>
+                            </a>
+                        </div>
+                    </li>
+                <%}%>
+            </ul>
+        </div id>
+        <form action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Your name please" required>
+            <input type="number" name="phone" placeholder="Phone number please" required>
+            <button type="submit">Submit</button>
+        </form>
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
